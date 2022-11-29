@@ -48,7 +48,7 @@ function ExpensesOverview() {
         tabBarActiveTintColor: GlobalStyles.colors.accent500,
         headerRight: ({ tintColor }) => (
           <IconButton
-            icon="add"
+            icon="person-outline"
             size={24}
             color={tintColor}
             onPress={() => {
@@ -58,25 +58,26 @@ function ExpensesOverview() {
         ),
       })}
     >
+
       <BottomTabs.Screen
-        name="RecentExpenses"
-        component={GymScreen}
+        name="Food"
+        component={FoodScreen}
         options={{
-          title: 'Recent Expenses',
-          tabBarLabel: 'Recent',
+          title: 'Food',
+          tabBarLabel: 'Food',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="hourglass" size={size} color={color} />
+            <Ionicons name="restaurant-outline" size={size} color={color} />
           ),
         }}
       />
       <BottomTabs.Screen
-        name="AllExpenses"
-        component={FoodScreen}
+        name="Gym"
+        component={GymScreen}
         options={{
-          title: 'All Expenses',
-          tabBarLabel: 'All Expenses',
+          title: 'Gym',
+          tabBarLabel: 'Gym',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="calendar" size={size} color={color} />
+            <Ionicons name="barbell-outline" size={size} color={color} />
           ),
         }}
       />
