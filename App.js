@@ -7,6 +7,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+//android navigation bar 
+import SystemNavigationBar from 'react-native-system-navigation-bar';
+
+
 //colors
 export const GlobalStyles = {
   colors: {
@@ -29,6 +33,7 @@ export const GlobalStyles = {
 import CkalCalculator from './screens/CkalCalculator';
 import FoodScreen from './screens/FoodScreen';
 import GymScreen from './screens/GymScreen';
+import ProgressScreen from './screens/ProgressScreen'
 
 //components
 import IconButton from './components/UI/IconButton';
@@ -40,6 +45,7 @@ const BottomTabs = createBottomTabNavigator();
 
 function ExpensesOverview() {
   return (
+
     <BottomTabs.Navigator
       screenOptions={({ navigation }) => ({
         headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
@@ -48,7 +54,7 @@ function ExpensesOverview() {
         tabBarActiveTintColor: GlobalStyles.colors.accent500,
         headerRight: ({ tintColor }) => (
           <IconButton
-            icon="person-outline"
+            icon="settings-outline"
             size={24}
             color={tintColor}
             onPress={() => {
@@ -81,6 +87,18 @@ function ExpensesOverview() {
           ),
         }}
       />
+      <BottomTabs.Screen
+        name="Progress"
+        component={ProgressScreen}
+        options={{
+          title: 'Progress',
+          tabBarLabel: 'Progress',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="analytics-outline" size={size} color={color} />
+            
+          ),
+        }}
+      />
     </BottomTabs.Navigator>
   );
 }
@@ -90,7 +108,11 @@ function ExpensesOverview() {
 
 
 export default function App() {
+SystemNavigationBar.setNavigationColor('red');
+
   return (
+    
+    
     <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -106,9 +128,9 @@ export default function App() {
             <Stack.Screen
               name="CkalCalculator"
               component={CkalCalculator}
-              options={{
-                presentation: 'modal',
-              }}
+              // options={{
+              //   presentation: 'modal',
+              // }}
             />
 
           </Stack.Navigator>
